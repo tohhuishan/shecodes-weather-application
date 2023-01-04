@@ -1,0 +1,162 @@
+body {
+  background: linear-gradient(
+    180.3deg,
+    rgb(221, 221, 221) 5.5%,
+    rgb(110, 136, 161) 90.2%
+  );
+  font-family: "Permanent Marker", cursive;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+.card {
+  border: 1px solid rgba(0, 80, 255, 0.35);
+  margin: 50px 25px;
+  padding: 30px;
+}
+
+.card-body {
+  padding: 50px;
+}
+
+.top-section .input-city {
+  margin: 20px auto;
+}
+
+.top-section .search-button {
+  background: transparent;
+  border: none;
+  margin: 20px auto;
+}
+
+.top-section .search-icon {
+  color: blue;
+}
+
+.middle-section-1 {
+  margin: 40px auto;
+}
+
+.middle-section-1 .left-side h3 {
+  margin-left: 300px;
+}
+
+.middle-section-1 .displayed-location-with-icon h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.middle-section-1 .current-weather-and-temperature h2 {
+  font-size: 70px;
+}
+
+.middle-section-1 .current-weather h2 {
+  padding-right: 20px;
+  text-align: right;
+}
+
+.middle-section-1 .current-temperature h2 {
+  padding-left: 20px;
+  text-align: left;
+}
+
+.current-temperature .temperature-units-conversion {
+  font-size: 20px;
+  position: relative;
+  top: -20px;
+}
+
+.middle-section-1 .right-side h3 {
+  font-size: 16px;
+}
+
+.bottom-section {
+  margin: 50px auto 30px auto;
+  text-align: center;
+}
+
+.bottom-section-1,
+.bottom-section-2 {
+  margin: 40px auto;
+}
+
+.forecast-weather-1,
+.forecast-weather-2,
+.forecast-weather-3,
+.forecast-weather-4,
+.forecast-weather-5,
+.forecast-weather-6,
+.forecast-weather-7 {
+  margin: 15px auto;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 0;
+}
+
+.footer h2 {
+  color: rgb(128, 128, 128);
+  display: inline;
+  font-size: 12px;
+  margin: 10px;
+}
+
+.footer .current-location-button {
+  background: white;
+  border: 1px solid rgb(128, 128, 128);
+  border-radius: 10px;
+  margin: 10px;
+  transition: all 200ms ease-in-out;
+}
+
+.footer .current-location-button:hover {
+  background-color: rgb(210, 210, 210);
+}
+
+.footer #current-location-icon-in-button {
+  color: rgb(255, 0, 0);
+}
+
+.fa-cloud-bolt {
+  color: rgb(0, 0, 100);
+}
+
+.fa-cloud-rain {
+  color: rgb(0, 115, 255);
+}
+
+.fa-cloud-showers-heavy {
+  color: rgb(0, 40, 140);
+}
+
+.fa-cloud-sun {
+  color: rgba(0, 115, 255, 0.6);
+}
+
+.fa-hurricane {
+  color: rgb(128, 128, 128);
+}
+
+.fa-smog {
+  color: rgb(128, 128, 128);
+}
+
+.fa-snowflake {
+  color: rgb(160, 230, 240);
+}
+
+.fa-sun {
+  color: rgb(255, 221, 0);
+}
+
+.fa-tornado {
+  color: rgb(128, 128, 128);
+}
+
+.fa-wind {
+  color: rgb(128, 128, 128);
+}
