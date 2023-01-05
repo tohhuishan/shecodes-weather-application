@@ -160,3 +160,8 @@ h4 {
 .fa-wind {
   color: rgb(128, 128, 128);
 }
+
+footer {
+  margin-bottom: 40px;
+  text-align: center;
+}
