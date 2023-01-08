@@ -70,22 +70,31 @@ function displayWeather(response) {
   let currentTemperatureElement = document.querySelector(
     "span#current-temperature"
   );
-  let currentTemperature = Math.round(response.data.main.temp);
+  let currentTemperature = Math.round(response.data.temperature.current);
   currentTemperatureElement.innerHTML = currentTemperature;
 
   let currentHumidityElement = document.querySelector("span.current-humidity");
-  let currentHumidity = Math.round(response.data.main.humidity);
+  let currentHumidity = Math.round(response.data.temperature.humidity);
   currentHumidityElement.innerHTML = currentHumidity;
 
   let currentWindElement = document.querySelector("span.current-wind");
   let currentWind = Math.round(response.data.wind.speed);
   currentWindElement.innerHTML = currentWind;
 
-  let city = response.data.name;
-  let country = response.data.sys.country;
+  let city = response.data.city;
+  let country = response.data.country;
 
   let currentLocation = document.querySelector(".searched-location");
   currentLocation.innerHTML = `${city} in ${country}`;
+
+  let currentWeatherIconElement = document.querySelector(
+    ".current-weather-icon"
+  );
+  currentWeatherIconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
+  currentWeatherIconElement.setAttribute("alt", response.data.condition.icon);
 }
 
 function showCityInput(event) {
@@ -94,14 +103,14 @@ function showCityInput(event) {
   let searchInput = document.querySelector(".input-city");
   let currentLocation = document.querySelector(".searched-location");
 
-  let apiKey = "017d56650cd168d68067850318775d43";
+  let apiKey = "o65149f37004a818054t1c639bd4becf";
   let temperatureUnits = "metric";
-  let firstWeatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&appid=${apiKey}&units=${temperatureUnits}`;
+  let weatherApiUrl = `https://api.shecodes.io/weather/v1/current?query=${searchInput.value}&key=${apiKey}&units=${temperatureUnits}`;
 
   if (searchInput.value) {
     currentLocation.innerHTML = searchInput.value;
 
-    axios.get(firstWeatherApiUrl).then(displayWeather);
+    axios.get(weatherApiUrl).then(displayWeather);
   } else {
     alert("Please type in the city you would like to find");
   }
@@ -112,16 +121,36 @@ searchInputForm.addEventListener("submit", showCityInput);
 
 // Current weather at set location
 function getDefaultWeather() {
-  let cityMoscow = "moscow";
+  let city = "Bangkok";
 
-  let apiKey = "017d56650cd168d68067850318775d43";
+  let apiKey = "o65149f37004a818054t1c639bd4becf";
   let temperatureUnits = "metric";
-  let firstWeatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityMoscow}&appid=${apiKey}&units=${temperatureUnits}`;
+  let weatherApiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${temperatureUnits}`;
 
-  axios.get(firstWeatherApiUrl).then(displayWeather);
+  axios.get(weatherApiUrl).then(displayWeather);
 }
 
 getDefaultWeather();
+
+// Use current location feature
+let currentLocationButton = document.querySelector(".current-location-button");
+
+function getPosition(position) {
+  let currentLatitude = position.coords.latitude;
+  let currentLongitude = position.coords.longitude;
+
+  let temperatureUnits = "metric";
+  let apiKey = "o65149f37004a818054t1c639bd4becf";
+  let weatherApiUrl = `https://api.shecodes.io/weather/v1/current?lat=${currentLatitude}&lon=${currentLongitude}&key=${apiKey}&units=${temperatureUnits}`;
+
+  axios.get(weatherApiUrl).then(displayWeather);
+}
+
+function useNavigator() {
+  navigator.geolocation.getCurrentPosition(getPosition);
+}
+
+currentLocationButton.addEventListener("click", useNavigator);
 
 // Temperature conversion feature
 // let unitConversionToCelsius = document.querySelector(".celsius-link");
@@ -177,23 +206,3 @@ getDefaultWeather();
 
 // unitConversionToCelsius.addEventListener("click", convertToCelsius);
 // unitConversionToFahrenheit.addEventListener("click", convertToFahrenheit);
-
-// Use current location feature
-let currentLocationButton = document.querySelector(".current-location-button");
-
-function getPosition(position) {
-  let currentLatitude = position.coords.latitude;
-  let currentLongitude = position.coords.longitude;
-
-  let temperatureUnits = "metric";
-  let apiKey = "017d56650cd168d68067850318775d43";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${currentLatitude}&lon=${currentLongitude}&appid=${apiKey}&units=${temperatureUnits}`;
-
-  axios.get(apiUrl).then(displayWeather);
-}
-
-function useNavigator() {
-  navigator.geolocation.getCurrentPosition(getPosition);
-}
-
-currentLocationButton.addEventListener("click", useNavigator);

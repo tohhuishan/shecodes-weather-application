@@ -35,30 +35,32 @@ h4 {
   color: blue;
 }
 
-.middle-section-1 {
+.middle-section {
   margin: 40px auto;
 }
 
-.middle-section-1 .left-side h3 {
+.middle-section .left-side h3 {
   margin-left: 300px;
 }
 
-.middle-section-1 .displayed-location-with-icon h1 {
+.middle-section .displayed-location-with-icon h1 {
   font-size: 32px;
   margin-bottom: 20px;
   text-align: center;
 }
 
-.middle-section-1 .current-weather-and-temperature h2 {
+.middle-section .current-weather-and-temperature h2 {
   font-size: 70px;
 }
 
-.middle-section-1 .current-weather h2 {
-  padding-right: 20px;
-  text-align: right;
+.middle-section .current-weather-icon {
+  min-width: 130px;
+  position: relative;
+  left: 200px;
+  top: -20px;
 }
 
-.middle-section-1 .current-temperature h2 {
+.middle-section .current-temperature h2 {
   padding-left: 20px;
   text-align: left;
 }
@@ -69,8 +71,22 @@ h4 {
   top: -20px;
 }
 
-.middle-section-1 .right-side h3 {
+.middle-section .right-side h3 {
   font-size: 16px;
+}
+
+.middle-section .right-side .last-updated {
+  color: rgb(25, 25, 112);
+}
+
+.middle-section .current-day h3,
+.middle-section .current-date h3,
+.middle-section .current-time h3,
+.middle-section .current-humidity h3,
+.middle-section .current-wind h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
 }
 
 .bottom-section {
@@ -78,18 +94,12 @@ h4 {
   text-align: center;
 }
 
-.bottom-section-1,
-.bottom-section-2 {
-  margin: 40px auto;
-}
-
 .forecast-weather-1,
 .forecast-weather-2,
 .forecast-weather-3,
 .forecast-weather-4,
 .forecast-weather-5,
-.forecast-weather-6,
-.forecast-weather-7 {
+.forecast-weather-6 {
   margin: 15px auto;
 }
 
@@ -119,46 +129,6 @@ h4 {
 
 .footer #current-location-icon-in-button {
   color: rgb(255, 0, 0);
-}
-
-.fa-cloud-bolt {
-  color: rgb(0, 0, 100);
-}
-
-.fa-cloud-rain {
-  color: rgb(0, 115, 255);
-}
-
-.fa-cloud-showers-heavy {
-  color: rgb(0, 40, 140);
-}
-
-.fa-cloud-sun {
-  color: rgba(0, 115, 255, 0.6);
-}
-
-.fa-hurricane {
-  color: rgb(128, 128, 128);
-}
-
-.fa-smog {
-  color: rgb(128, 128, 128);
-}
-
-.fa-snowflake {
-  color: rgb(160, 230, 240);
-}
-
-.fa-sun {
-  color: rgb(255, 221, 0);
-}
-
-.fa-tornado {
-  color: rgb(128, 128, 128);
-}
-
-.fa-wind {
-  color: rgb(128, 128, 128);
 }
 
 footer {
