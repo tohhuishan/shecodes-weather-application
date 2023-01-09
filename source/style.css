@@ -54,10 +54,11 @@ h4 {
 }
 
 .middle-section .current-weather-icon {
-  min-width: 130px;
+  min-width: 150px;
+
   position: relative;
-  left: 200px;
-  top: -20px;
+  top: -32px;
+  left: 180px;
 }
 
 .middle-section .current-temperature h2 {
@@ -69,6 +70,16 @@ h4 {
   font-size: 20px;
   position: relative;
   top: -20px;
+}
+
+.current-temperature .active {
+  color: rgb(0, 0, 0);
+  cursor: default;
+  text-decoration: none;
+}
+
+.current-temperature .active:hover {
+  text-decoration: none;
 }
 
 .middle-section .right-side h3 {

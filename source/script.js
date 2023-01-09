@@ -1,6 +1,4 @@
 // Date feature
-let now = new Date();
-
 function displayCurrentDateAndTime(dateAndTimeNow) {
   let days = [
     "Sunday",
@@ -63,10 +61,13 @@ function displayCurrentDateAndTime(dateAndTimeNow) {
   minuteNow.innerHTML = currentMinute;
 }
 
+let now = new Date();
 displayCurrentDateAndTime(now);
 
 // Search city weather feature
 function displayWeather(response) {
+  celsiusTemperature = Math.round(response.data.temperature.current);
+
   let currentTemperatureElement = document.querySelector(
     "span#current-temperature"
   );
@@ -133,8 +134,6 @@ function getDefaultWeather() {
 getDefaultWeather();
 
 // Use current location feature
-let currentLocationButton = document.querySelector(".current-location-button");
-
 function getPosition(position) {
   let currentLatitude = position.coords.latitude;
   let currentLongitude = position.coords.longitude;
@@ -150,59 +149,41 @@ function useNavigator() {
   navigator.geolocation.getCurrentPosition(getPosition);
 }
 
+let currentLocationButton = document.querySelector(".current-location-button");
 currentLocationButton.addEventListener("click", useNavigator);
 
 // Temperature conversion feature
-// let unitConversionToCelsius = document.querySelector(".celsius-link");
-// let unitConversionToFahrenheit = document.querySelector(".fahrenheit-link");
+function convertToCelsius(event) {
+  event.preventDefault();
 
-// function convertToCelsius(changeUnits) {
-//   changeUnits.preventDefault();
+  let currentTemperatureElement = document.querySelector(
+    "span#current-temperature"
+  );
 
-//   let currentTemperatureElement = document.querySelector(
-//     "span#current-temperature"
-//   );
+  unitConversionToCelsius.classList.add("active");
+  unitConversionToFahrenheit.classList.remove("active");
 
-//   if (currentTemperatureElement.classList.contains("celsius")) {
-//     return;
-//   } else {
-//     currentTemperatureElement.classList.add("celsius");
-//     currentTemperatureElement.classList.remove("fahrenheit");
-//   }
+  currentTemperatureElement.innerHTML = celsiusTemperature;
+}
 
-//   let currentTemperature = currentTemperatureElement.innerHTML;
-//   currentTemperature = Number(currentTemperature);
+function convertToFahrenheit(event) {
+  event.preventDefault();
 
-//   let currentTemperatureInCelsius = document.querySelector("span.celsius");
-//   currentTemperatureInCelsius.innerHTML = Math.round(
-//     ((currentTemperature - 32) * 5) / 9
-//   );
-// }
+  let currentTemperatureElement = document.querySelector(
+    "span#current-temperature"
+  );
 
-// function convertToFahrenheit(changeUnits) {
-//   changeUnits.preventDefault();
+  unitConversionToFahrenheit.classList.add("active");
+  unitConversionToCelsius.classList.remove("active");
 
-//   let currentTemperatureElement = document.querySelector(
-//     "span#current-temperature"
-//   );
+  currentTemperatureElement.innerHTML = Math.round(
+    celsiusTemperature * (9 / 5) + 32
+  );
+}
+let celsiusTemperature = null;
 
-//   if (currentTemperatureElement.classList.contains("fahrenheit")) {
-//     return;
-//   } else {
-//     currentTemperatureElement.classList.add("fahrenheit");
-//     currentTemperatureElement.classList.remove("celsius");
-//   }
+let unitConversionToCelsius = document.querySelector(".celsius-link");
+let unitConversionToFahrenheit = document.querySelector(".fahrenheit-link");
 
-//   let currentTemperatureInFahrenheit =
-//     document.querySelector("span.fahrenheit");
-
-//   let currentTemperature = currentTemperatureElement.innerHTML;
-//   currentTemperature = Number(currentTemperature);
-
-//   currentTemperatureInFahrenheit.innerHTML = Math.round(
-//     currentTemperature * (9 / 5) + 32
-//   );
-// }
-
-// unitConversionToCelsius.addEventListener("click", convertToCelsius);
-// unitConversionToFahrenheit.addEventListener("click", convertToFahrenheit);
+unitConversionToCelsius.addEventListener("click", convertToCelsius);
+unitConversionToFahrenheit.addEventListener("click", convertToFahrenheit);
