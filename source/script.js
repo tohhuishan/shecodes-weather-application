@@ -83,7 +83,53 @@ function displayCurrentDateAndTime(dateAndTimeNow) {
 let now = new Date();
 displayCurrentDateAndTime(now);
 
-// Search city weather feature
+// Search and current city weather & 6-day forecast feature
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
+      <div class="forecast-day-${index}">
+        ${formatForecastDay(forecastDay.time)}
+      </div>
+
+      <div class="forecast-weather-${index}">
+        <img src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+          forecastDay.condition.icon
+        }.png" alt="" width="50" />
+      </div>
+
+      <div class="forecast-min-and-max-temperature">
+        <span class="forecast-min-temperature-${index}">
+          ${Math.round(forecastDay.temperature.minimum)}°
+        </span>
+        <span class="forecast-max-temperature-${index}">
+          ${Math.round(forecastDay.temperature.maximum)}°
+        </span>
+      </div>
+    </div>`;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+
+  console.log(forecastHTML);
+}
+
 function displayWeather(response) {
   celsiusTemperature = Math.round(response.data.temperature.current);
 
@@ -130,12 +176,14 @@ function showCityInput(event) {
 
   let apiKey = "o65149f37004a818054t1c639bd4becf";
   let temperatureUnits = "metric";
-  let weatherApiUrl = `https://api.shecodes.io/weather/v1/current?query=${searchInput.value}&key=${apiKey}&units=${temperatureUnits}`;
+  let currentWeatherApiUrl = `https://api.shecodes.io/weather/v1/current?query=${searchInput.value}&key=${apiKey}&units=${temperatureUnits}`;
+  let forecastWeatherApiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${searchInput.value}&key=${apiKey}`;
 
   if (searchInput.value) {
     currentLocation.innerHTML = searchInput.value;
 
-    axios.get(weatherApiUrl).then(displayWeather);
+    axios.get(currentWeatherApiUrl).then(displayWeather);
+    axios.get(forecastWeatherApiUrl).then(displayForecast);
   } else {
     alert("Please type in the city you would like to find");
   }
@@ -150,9 +198,11 @@ function getDefaultWeather() {
 
   let apiKey = "o65149f37004a818054t1c639bd4becf";
   let temperatureUnits = "metric";
-  let weatherApiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${temperatureUnits}`;
+  let currentWeatherApiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${temperatureUnits}`;
+  let forecastWeatherApiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${temperatureUnits}`;
 
-  axios.get(weatherApiUrl).then(displayWeather);
+  axios.get(currentWeatherApiUrl).then(displayWeather);
+  axios.get(forecastWeatherApiUrl).then(displayForecast);
 }
 
 getDefaultWeather();
@@ -164,9 +214,11 @@ function getPosition(position) {
 
   let temperatureUnits = "metric";
   let apiKey = "o65149f37004a818054t1c639bd4becf";
-  let weatherApiUrl = `https://api.shecodes.io/weather/v1/current?lat=${currentLatitude}&lon=${currentLongitude}&key=${apiKey}&units=${temperatureUnits}`;
+  let currentWeatherApiUrl = `https://api.shecodes.io/weather/v1/current?lat=${currentLatitude}&lon=${currentLongitude}&key=${apiKey}&units=${temperatureUnits}`;
+  let forecastWeatherApiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${currentLongitude}&lat=${currentLatitude}&key=${apiKey}&units=${temperatureUnits}`;
 
-  axios.get(weatherApiUrl).then(displayWeather);
+  axios.get(currentWeatherApiUrl).then(displayWeather);
+  axios.get(forecastWeatherApiUrl).then(displayForecast);
 }
 
 function useNavigator() {
