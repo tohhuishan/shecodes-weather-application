@@ -45,19 +45,19 @@ function displayCurrentDateAndTime(dateAndTimeNow) {
   let openSourceCodeElement = document.querySelector(".open-source-code");
   let developerNameElement = document.querySelector(".developer-name");
   if (currentHour < 7 || currentHour > 18) {
-    body.classList.add("light");
-    body.classList.remove("dark");
-    openSourceCodeElement.classList.add("light");
-    openSourceCodeElement.classList.remove("dark");
-    developerNameElement.classList.add("light");
-    developerNameElement.classList.remove("dark");
-  } else {
     body.classList.add("dark");
     body.classList.remove("light");
     openSourceCodeElement.classList.add("dark");
     openSourceCodeElement.classList.remove("light");
     developerNameElement.classList.add("dark");
     developerNameElement.classList.remove("light");
+  } else {
+    body.classList.add("light");
+    body.classList.remove("dark");
+    openSourceCodeElement.classList.add("light");
+    openSourceCodeElement.classList.remove("dark");
+    developerNameElement.classList.add("light");
+    developerNameElement.classList.remove("dark");
   }
 
   let currentMinute = dateAndTimeNow.getMinutes();
