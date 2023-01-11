@@ -20,7 +20,7 @@ h4 {
 
 .card {
   border: 1px solid rgba(0, 80, 255, 0.35);
-  margin: 50px 25px;
+  margin: 50px 150px;
   padding: 30px;
 }
 
@@ -47,36 +47,29 @@ h4 {
 }
 
 .middle-section .left-side h3 {
-  margin-left: 300px;
 }
 
 .middle-section .displayed-location-with-icon h1 {
-  font-size: 32px;
+  font-size: 28px;
   margin-bottom: 20px;
   text-align: center;
 }
 
 .middle-section .current-weather-and-temperature h2 {
-  font-size: 70px;
+  font-size: 50px;
 }
 
 .middle-section .current-weather-icon {
-  min-width: 150px;
-
+  min-width: 100px;
   position: relative;
-  top: -32px;
-  left: 180px;
-}
-
-.middle-section .current-temperature h2 {
-  padding-left: 20px;
-  text-align: left;
+  top: -20px;
+  left: 80px;
 }
 
 .current-temperature .temperature-units-conversion {
   font-size: 20px;
   position: relative;
-  top: -20px;
+  top: -10px;
 }
 
 .current-temperature .active {
