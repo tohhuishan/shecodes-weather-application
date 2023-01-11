@@ -1,10 +1,17 @@
 body {
-  background: linear-gradient(
-    180.3deg,
-    rgb(221, 221, 221) 5.5%,
-    rgb(110, 136, 161) 90.2%
-  );
   font-family: "Permanent Marker", cursive;
+}
+
+body.light {
+  background: linear-gradient(
+    180deg,
+    rgb(199, 231, 241) 0%,
+    rgb(103, 200, 234) 100%
+  );
+}
+
+body.dark {
+  background: linear-gradient(180deg, rgb(12, 9, 86) 0%, rgb(15, 13, 94) 100%);
 }
 
 h4 {
@@ -114,19 +121,19 @@ h4 {
   margin: 15px auto;
 }
 
-.footer {
+.find-current-location {
   text-align: center;
   margin-top: 0;
 }
 
-.footer h2 {
+.find-current-location h2 {
   color: rgb(128, 128, 128);
   display: inline;
   font-size: 12px;
   margin: 10px;
 }
 
-.footer .current-location-button {
+.find-current-location .current-location-button {
   background: white;
   border: 1px solid rgb(128, 128, 128);
   border-radius: 10px;
@@ -134,15 +141,31 @@ h4 {
   transition: all 200ms ease-in-out;
 }
 
-.footer .current-location-button:hover {
+.find-current-location .current-location-button:hover {
   background-color: rgb(210, 210, 210);
 }
 
-.footer #current-location-icon-in-button {
+.find-current-location #current-location-icon-in-button {
   color: rgb(255, 0, 0);
 }
 
 footer {
   margin-bottom: 40px;
   text-align: center;
+}
+
+footer .open-source-code.light {
+  color: rgb(13, 110, 253);
+}
+
+footer .developer-name.light {
+  color: rgb(33, 37, 41);
+}
+
+footer .open-source-code.dark {
+  color: rgb(130, 171, 234);
+}
+
+footer .developer-name.dark {
+  color: rgb(255, 255, 255);
 }

@@ -41,6 +41,25 @@ function displayCurrentDateAndTime(dateAndTimeNow) {
     currentHour = "0" + currentHour;
   }
 
+  let body = document.querySelector("body");
+  let openSourceCodeElement = document.querySelector(".open-source-code");
+  let developerNameElement = document.querySelector(".developer-name");
+  if (currentHour < 7 || currentHour > 18) {
+    body.classList.add("light");
+    body.classList.remove("dark");
+    openSourceCodeElement.classList.add("light");
+    openSourceCodeElement.classList.remove("dark");
+    developerNameElement.classList.add("light");
+    developerNameElement.classList.remove("dark");
+  } else {
+    body.classList.add("dark");
+    body.classList.remove("light");
+    openSourceCodeElement.classList.add("dark");
+    openSourceCodeElement.classList.remove("light");
+    developerNameElement.classList.add("dark");
+    developerNameElement.classList.remove("light");
+  }
+
   let currentMinute = dateAndTimeNow.getMinutes();
   if (currentMinute < 10) {
     currentMinute = "0" + currentMinute;
@@ -95,7 +114,12 @@ function displayWeather(response) {
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
-  currentWeatherIconElement.setAttribute("alt", response.data.condition.icon);
+
+  let exactWeatherDescription = response.data.condition.description;
+  exactWeatherDescription =
+    exactWeatherDescription.charAt(0).toUpperCase() +
+    exactWeatherDescription.slice(1);
+  currentWeatherIconElement.setAttribute("alt", exactWeatherDescription);
 }
 
 function showCityInput(event) {
