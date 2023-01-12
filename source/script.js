@@ -99,6 +99,17 @@ function displayForecast(response) {
 
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
+      let forecastMinimumCelsiusTemperature = Math.round(
+        forecastDay.temperature.minimum
+      );
+      let forecastMaximumCelsiusTemperature = Math.round(
+        forecastDay.temperature.maximum
+      );
+      let forecastMinimumFahrenheitTemperature =
+        forecastMinimumCelsiusTemperature * (9 / 5) + 32;
+      let forecastMaximumFahrenheitTemperature =
+        forecastMaximumCelsiusTemperature * (9 / 5) + 32;
+
       forecastHTML =
         forecastHTML +
         `<div class="col-2">
@@ -112,12 +123,21 @@ function displayForecast(response) {
         }.png" alt="" width="50" />
       </div>
 
-      <div class="forecast-min-and-max-temperature">
+      <div class="forecast-min-and-max-celsius-temperature">
         <span class="forecast-min-temperature-${index}">
-          ${Math.round(forecastDay.temperature.minimum)}°C
+          ${forecastMinimumCelsiusTemperature}°C
         </span>
         <span class="forecast-max-temperature-${index}">
-          ${Math.round(forecastDay.temperature.maximum)}°C
+          ${forecastMaximumCelsiusTemperature}°C
+        </span>
+      </div>
+
+         <div class="forecast-min-and-max-fahrenheit-temperature">
+        <span class="forecast-min-temperature-${index}">
+          ${forecastMinimumFahrenheitTemperature}°C
+        </span>
+        <span class="forecast-max-temperature-${index}">
+          ${forecastMaximumFahrenheitTemperature}°C
         </span>
       </div>
     </div>`;
@@ -126,12 +146,10 @@ function displayForecast(response) {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-
-  console.log(forecastHTML);
 }
 
 function displayWeather(response) {
-  celsiusTemperature = Math.round(response.data.temperature.current);
+  currentCelsiusTemperature = Math.round(response.data.temperature.current);
 
   let currentTemperatureElement = document.querySelector(
     "span#current-temperature"
@@ -239,7 +257,7 @@ function convertToCelsius(event) {
   unitConversionToCelsius.classList.add("active");
   unitConversionToFahrenheit.classList.remove("active");
 
-  currentTemperatureElement.innerHTML = celsiusTemperature;
+  currentTemperatureElement.innerHTML = currentCelsiusTemperature;
 }
 
 function convertToFahrenheit(event) {
@@ -253,10 +271,10 @@ function convertToFahrenheit(event) {
   unitConversionToCelsius.classList.remove("active");
 
   currentTemperatureElement.innerHTML = Math.round(
-    celsiusTemperature * (9 / 5) + 32
+    currentCelsiusTemperature * (9 / 5) + 32
   );
 }
-let celsiusTemperature = null;
+let currentCelsiusTemperature = null;
 
 let unitConversionToCelsius = document.querySelector(".celsius-link");
 let unitConversionToFahrenheit = document.querySelector(".fahrenheit-link");
