@@ -105,10 +105,12 @@ function displayForecast(response) {
       let forecastMaximumCelsiusTemperature = Math.round(
         forecastDay.temperature.maximum
       );
-      let forecastMinimumFahrenheitTemperature =
-        forecastMinimumCelsiusTemperature * (9 / 5) + 32;
-      let forecastMaximumFahrenheitTemperature =
-        forecastMaximumCelsiusTemperature * (9 / 5) + 32;
+      let forecastMinimumFahrenheitTemperature = Math.round(
+        forecastMinimumCelsiusTemperature * (9 / 5) + 32
+      );
+      let forecastMaximumFahrenheitTemperature = Math.round(
+        forecastMaximumCelsiusTemperature * (9 / 5) + 32
+      );
 
       forecastHTML =
         forecastHTML +
@@ -134,10 +136,10 @@ function displayForecast(response) {
 
          <div class="forecast-min-and-max-fahrenheit-temperature">
         <span class="forecast-min-temperature-${index}">
-          ${forecastMinimumFahrenheitTemperature}°C
+          ${forecastMinimumFahrenheitTemperature}°F
         </span>
         <span class="forecast-max-temperature-${index}">
-          ${forecastMaximumFahrenheitTemperature}°C
+          ${forecastMaximumFahrenheitTemperature}°F
         </span>
       </div>
     </div>`;
