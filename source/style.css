@@ -20,7 +20,7 @@ h4 {
 
 .card {
   border: 1px solid rgba(0, 80, 255, 0.35);
-  margin: 50px 150px;
+  margin: 50px auto;
   padding: 30px;
 }
 
@@ -44,12 +44,12 @@ h4 {
 
 .middle-section {
   margin: 40px auto 30px auto;
+  padding-left: 75px;
 }
 
 .middle-section .displayed-location-with-icon h1 {
   font-size: 28px;
   margin-bottom: 20px;
-  text-align: center;
 }
 
 .middle-section .current-weather-and-temperature h2 {
