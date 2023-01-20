@@ -186,6 +186,11 @@ function displayWeather(response) {
     exactWeatherDescription.charAt(0).toUpperCase() +
     exactWeatherDescription.slice(1);
   currentWeatherIconElement.setAttribute("alt", exactWeatherDescription);
+
+  unitConversionToCelsius.classList.add("active");
+  unitConversionToFahrenheit.classList.remove("active");
+
+  currentTemperatureElement.innerHTML = currentCelsiusTemperature;
 }
 
 function showCityInput(event) {
