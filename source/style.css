@@ -43,7 +43,7 @@ h4 {
 }
 
 .middle-section {
-  margin: 40px auto 30px auto;
+  margin: 30px auto;
   padding-left: 75px;
 }
 
@@ -60,7 +60,6 @@ h4 {
   min-width: 100px;
   position: relative;
   top: -20px;
-  left: 80px;
 }
 
 .current-temperature .temperature-units-conversion {
