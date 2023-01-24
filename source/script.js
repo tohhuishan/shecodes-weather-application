@@ -114,7 +114,7 @@ function displayForecast(response) {
 
       forecastHTML =
         forecastHTML +
-        `<div class="col-2">
+        `<div class="col-sm-4 mb-5">
       <div class="forecast-day-${index}">
         ${formatForecastDay(forecastDay.time)}
       </div>
@@ -125,22 +125,22 @@ function displayForecast(response) {
         }.png" alt="" width="50" />
       </div>
 
-      <div class="forecast-min-and-max-celsius-temperature">
-        <span class="forecast-min-temperature-${index}">
-          ${forecastMinimumCelsiusTemperature}°C
-        </span>
-        <span class="forecast-max-temperature-${index}">
-          ${forecastMaximumCelsiusTemperature}°C
-        </span>
+      <div class="row forecast-min-and-max-celsius-temperature">
+        <div class="col-sm-6 forecast-min-temperature-${index}">
+          ${forecastMinimumCelsiusTemperature} °C
+        </div>
+        <div class="col-sm-6 forecast-max-temperature-${index}">
+          ${forecastMaximumCelsiusTemperature} °C
+        </div>
       </div>
 
-         <div class="forecast-min-and-max-fahrenheit-temperature">
-        <span class="forecast-min-temperature-${index}">
-          ${forecastMinimumFahrenheitTemperature}°F
-        </span>
-        <span class="forecast-max-temperature-${index}">
-          ${forecastMaximumFahrenheitTemperature}°F
-        </span>
+         <div class="row forecast-min-and-max-fahrenheit-temperature">
+        <div class="col-sm-6 forecast-min-temperature-${index}">
+          ${forecastMinimumFahrenheitTemperature} °F
+        </div>
+        <div class="col-sm-6 forecast-max-temperature-${index}">
+          ${forecastMaximumFahrenheitTemperature} °F
+        </div>
       </div>
     </div>`;
     }
