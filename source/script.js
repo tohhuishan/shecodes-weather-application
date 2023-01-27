@@ -127,18 +127,26 @@ function displayForecast(response) {
 
       <div class="row forecast-min-and-max-celsius-temperature">
         <div class="col-sm-6 forecast-min-temperature-${index}">
-          ${forecastMinimumCelsiusTemperature} °C
+          ${forecastMinimumCelsiusTemperature} °C 
+          <span class="forecast-divider">|</span>
         </div>
+        
         <div class="col-sm-6 forecast-max-temperature-${index}">
-          ${forecastMaximumCelsiusTemperature} °C
+          <span class="forecast-divider">|</span>
+           ${forecastMaximumCelsiusTemperature} °C
         </div>
       </div>
 
+      <br />
+
          <div class="row forecast-min-and-max-fahrenheit-temperature">
         <div class="col-sm-6 forecast-min-temperature-${index}">
-          ${forecastMinimumFahrenheitTemperature} °F
+          ${forecastMinimumFahrenheitTemperature} °F 
+          <span class="forecast-divider">|</span>
         </div>
+      
         <div class="col-sm-6 forecast-max-temperature-${index}">
+          <span class="forecast-divider">|</span>
           ${forecastMaximumFahrenheitTemperature} °F
         </div>
       </div>

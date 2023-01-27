@@ -122,7 +122,8 @@ h4 {
 .forecast-min-temperature-3,
 .forecast-min-temperature-4,
 .forecast-min-temperature-5 {
-  text-align: right;
+  text-align: center;
+  padding: 0;
 }
 
 .forecast-max-temperature-0,
@@ -131,7 +132,8 @@ h4 {
 .forecast-max-temperature-3,
 .forecast-max-temperature-4,
 .forecast-max-temperature-5 {
-  text-align: left;
+  text-align: center;
+  padding: 0;
 }
 
 .find-current-location {
@@ -181,4 +183,39 @@ footer .open-source-code.dark {
 
 footer .developer-name.dark {
   color: rgb(255, 255, 255);
+}
+
+@media (max-width: 600px) {
+  .card-body {
+    padding: 0;
+  }
+
+  .middle-section {
+    padding: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .forecast-min-temperature-0,
+  .forecast-min-temperature-1,
+  .forecast-min-temperature-2,
+  .forecast-min-temperature-3,
+  .forecast-min-temperature-4,
+  .forecast-min-temperature-5 {
+    text-align: right;
+  }
+  .forecast-max-temperature-0,
+  .forecast-max-temperature-1,
+  .forecast-max-temperature-2,
+  .forecast-max-temperature-3,
+  .forecast-max-temperature-4,
+  .forecast-max-temperature-5 {
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .forecast-divider {
+    display: none;
+  }
 }
